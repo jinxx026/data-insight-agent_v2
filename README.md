@@ -1,5 +1,7 @@
 # DataInsight Agent
 
+**在线体验：[DataInsight Agent](https://data-insight-agent.streamlit.app/)**
+
 DataInsight Agent 是一个基于 LLM + RAG + 多 Agent 工作流 + SFT 数据集构造的智能数据分析系统。用户上传 CSV 或 Excel 数据集后，系统可以自动完成字段类型识别、数据质量检测、探索性数据分析、图表推荐、自然语言洞察生成、RAG 问答、SQL 表格查询、SFT JSONL 样本导出和 Markdown/HTML 报告导出。
 
 这个项目的目标不是做一个普通 dashboard，而是把数据分析流程拆成多个可复用 Agent，让系统能够自动理解数据、选择分析方法，并用自然语言解释结果。
