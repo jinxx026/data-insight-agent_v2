@@ -1,0 +1,70 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: data-insight-mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-datainsight}
+      MYSQL_USER: ${MYSQL_USER:-datainsight}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-datainsight}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-datainsight_root}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  streamlit:
+    build:
+      context: .
+      args:
+        PIP_INDEX_URL: ${PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+    container_name: data-insight-streamlit
+    command:
+      - streamlit
+      - run
+      - frontend/streamlit_app.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
+    ports:
+      - "8501:8501"
+    environment:
+      FRONTEND_URL: http://127.0.0.1:8501
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.deepseek.com/v1}
+      LLM_MODEL: ${LLM_MODEL:-deepseek-chat}
+
+  api:
+    build:
+      context: .
+      args:
+        PIP_INDEX_URL: ${PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+    container_name: data-insight-api
+    command:
+      - uvicorn
+      - app.main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+    ports:
+      - "8000:8000"
+    environment:
+      FRONTEND_URL: http://127.0.0.1:8501
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.deepseek.com/v1}
+      LLM_MODEL: ${LLM_MODEL:-deepseek-chat}
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-datainsight}:${MYSQL_PASSWORD:-datainsight}@mysql:3306/${MYSQL_DATABASE:-datainsight}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-replace_with_a_long_random_secret}
+      JWT_EXPIRE_MINUTES: ${JWT_EXPIRE_MINUTES:-1440}
+      MAX_STORED_ROWS: ${MAX_STORED_ROWS:-50000}
+      INIT_DB_ON_STARTUP: "true"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql_data:

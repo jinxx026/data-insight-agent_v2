@@ -1,0 +1,60 @@
+<style>
+:root { --accent: #087f78; }
+.stApp { background: #f5f6f8; }
+[data-testid="stHeader"] { background: #fff; }
+.stMainBlockContainer { max-width: 1600px; padding: 3rem 3rem 4rem; }
+.st-key-masthead {
+    background: #fff;
+    border-bottom: 1px solid #dfe5e6;
+    margin: 0 -3rem 1.4rem;
+    padding: 1rem 2rem 0;
+    width: calc(100% + 6rem) !important;
+    max-width:none !important;
+}
+.brand { display:flex; align-items:center; gap:12px; color:#20272b;
+    font-size:22px; font-weight:750; white-space:nowrap; padding-bottom:18px; }
+.brand-mark { color:var(--accent); font-size:36px; font-style:italic; font-weight:900; }
+.brand small { display:block; color:#777e86; font-size:10px; font-weight:500; margin-top:3px; }
+.st-key-masthead [role="radiogroup"] { gap:0; flex-wrap:wrap; }
+.st-key-masthead [data-testid="stRadio"] label {
+    margin:0 !important; padding:18px 14px 22px; border-bottom:3px solid transparent;
+    transition:background .15s, border-color .15s; cursor:pointer;
+}
+.st-key-masthead [data-testid="stRadio"] label > div:first-child { display:none; }
+.st-key-masthead [data-testid="stRadio"] label p { color:#59636b; font-size:14px; font-weight:600; }
+.st-key-masthead [data-testid="stRadio"] label:hover { background:#f1f6f5; }
+.st-key-masthead [data-testid="stRadio"] label:has(input:checked) {
+    border-bottom-color:var(--accent); background:#edf7f4;
+}
+.st-key-masthead [data-testid="stRadio"] label:has(input:checked) p { color:#086b64; }
+.st-key-masthead [data-testid="stRadio"] label:focus-within { outline:2px solid #087f78; outline-offset:-3px; }
+[data-testid="stHeader"] button { color:#59636b; }
+.workspace-label { color:#71717c; font-size:12px; font-weight:600; padding-top:8px; }
+.workspace-label span { color:var(--accent); margin:0 10px; }
+h1 { font-size:30px !important; letter-spacing:0 !important; padding-top:0 !important; }
+h2, h3 { letter-spacing:0 !important; }
+h3 { font-size:20px !important; }
+[data-testid="stFileUploader"] { background:#fff; border:1px solid #dfe1e7; border-radius:6px; padding:20px; }
+[data-testid="stFileUploaderDropzone"] { background:#fafafb; border:1px dashed #b5b8c3; min-height:155px; border-radius:4px; }
+[data-testid="stBaseButton-primary"] { background:var(--accent); border-color:var(--accent); border-radius:4px; }
+[data-testid="stMetric"] { border-top:2px solid var(--accent); padding:16px 0; }
+[class*="st-key-page_"] { animation:page-enter 200ms ease-out both; }
+@keyframes page-enter { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+@media(prefers-reduced-motion:reduce) {
+    [class*="st-key-page_"] { animation:none; }
+    .st-key-masthead [data-testid="stRadio"] label { transition:none; }
+}
+[data-testid="stSidebar"] { background:#fff; border-right:1px solid #e3e4e9; }
+@media(max-width:1100px) {
+    .st-key-masthead [data-testid="stHorizontalBlock"] { flex-wrap:wrap; }
+    .st-key-masthead [data-testid="stColumn"] { min-width:100%; }
+    .brand { padding-bottom:0; }
+}
+@media(max-width:640px) {
+    .stMainBlockContainer { padding:3rem 1rem 2rem; }
+    .st-key-masthead { margin:0 -1rem 1rem; width:calc(100% + 2rem) !important; padding:1rem 1rem 0; }
+    .st-key-masthead [data-testid="stRadio"] label { padding:12px 10px; }
+    .st-key-masthead [data-testid="stRadio"] label p { font-size:13px; }
+    h1 { font-size:25px !important; }
+}
+</style>

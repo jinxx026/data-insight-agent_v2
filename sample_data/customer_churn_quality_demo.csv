@@ -1,0 +1,12 @@
+customer_id,signup_date,gender,age,tenure,monthly_charges,total_charges,contract_type,payment_method,internet_service,support_note,churn
+20001,2024-01-15,Female,29,3,72.5,217.5,Month-to-month,Credit card,Fiber optic,"Customer contacted support twice about unstable network speed.",1
+20002,2022-03-20,Male,45,24,54.2,1300.8,One year,Bank transfer,DSL,"Customer reports stable service and prefers annual billing.",0
+20003,2023-08-02,Female,,12,88.1,1057.2,Month-to-month,Electronic check,Fiber optic,"Customer mentioned price sensitivity and asked about cancellation.",0
+20004,2020-11-11,Male,52,48,41.9,2011.2,Two year,Bank transfer,DSL,"Long-term customer with low service ticket volume.",0
+20005,2024-02-09,Female,23,5,67.3,336.5,Month-to-month,Electronic check,Fiber optic,"Customer requested discount after comparing competitor plans.",0
+20006,2019-06-30,Male,61,60,39.8,2388.0,Two year,Credit card,DSL,"Customer has automatic payment enabled and rarely contacts support.",0
+20007,2022-10-14,Female,40,18,75.4,1357.2,One year,Credit card,Fiber optic,"Customer upgraded service after a retention offer.",0
+20008,2024-03-01,Male,33,2,310.0,620.0,Month-to-month,Electronic check,Fiber optic,"Customer had repeated complaints about installation delay.",0
+20009,2021-05-25,Female,57,36,45.0,1620.0,Two year,Bank transfer,DSL,"Customer keeps the same package and has no recent complaints.",0
+20010,2023-12-18,Male,27,9,82.7,744.3,Month-to-month,Electronic check,Fiber optic,"Customer asked whether early termination would include extra fees.",0
+20010,2023-12-18,Male,27,9,82.7,744.3,Month-to-month,Electronic check,Fiber optic,"Customer asked whether early termination would include extra fees.",0
